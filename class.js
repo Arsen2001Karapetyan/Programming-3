@@ -1,37 +1,5 @@
 //------------------------------------------------XOT--------------------------------------------
-class Grass {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-
-    }
-    chooseCell(character) {
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-
-            }
-
-        }
-        return found;
-    }
-
+class Grass extends LivingCreature {
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
@@ -49,12 +17,7 @@ class Grass {
 
 }
 //------------------------------------------------XOTAKER--------------------------------------------
-class GrassEater {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 5;
-    }
+class GrassEater extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -67,24 +30,6 @@ class GrassEater {
             [this.x + 1, this.y + 1]
         ];
     };
-    chooseCell(character) {
-
-        this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-
-            }
-
-        }
-        return found;
-    }
-
 
     move() {
         var emptyCells = this.chooseCell(0);
@@ -140,12 +85,7 @@ class GrassEater {
     }
 }
 //------------------------------------------------GISHATICH--------------------------------------------
-class Predator {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 5;
-    }
+class Predator extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -158,23 +98,7 @@ class Predator {
             [this.x + 1, this.y + 1]
         ];
     };
-    chooseCell(character) {
 
-        this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-
-            }
-
-        }
-        return found;
-    }
     move() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(0);
@@ -228,12 +152,7 @@ class Predator {
     }
 }
 //------------------------------------------------MAH--------------------------------------------
-class Mah {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 5;
-    }
+class Mah extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
             [this.x - 5, this.y - 5],
@@ -246,23 +165,7 @@ class Mah {
             [this.x + 5, this.y + 5]
         ];
     };
-    chooseCell(character) {
 
-        this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-
-            }
-
-        }
-        return found;
-    }
     move() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(0);
@@ -285,6 +188,7 @@ class Mah {
         }
         this.energy--;
     }
+
     eat() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(3);
@@ -307,7 +211,7 @@ class Mah {
             if (this.energy >= 7) {
                 mah.push(new Mah(this.x, this.y));
                 this.energy = 2;
-            } 
+            }
 
         } else {
             this.move();
@@ -315,12 +219,7 @@ class Mah {
     }
 }
 //------------------------------------------------AMENAKER--------------------------------------------
-class Hska {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 5;
-    }
+class Hska extends LivingCreature {
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -349,23 +248,7 @@ class Hska {
             [this.x + 3, this.y + 3]
         ];
     };
-    chooseCell(character) {
 
-        this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-
-            }
-
-        }
-        return found;
-    }
     move() {
         this.getNewCoordinates();
         var emptyCells = this.chooseCell(0);
