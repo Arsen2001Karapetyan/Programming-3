@@ -5,6 +5,13 @@ var mah = [];
 var hska = [];
 var m = 50;
 var matrix = [];
+
+var Grass = require("./Grass");
+var GrassEater = require("./GrassEater");
+var Predator = require("./Predator");
+var Mah = require("./Mah");
+var Hska = require("./Hska");
+
 for (var y = 0; y < m; y++) {
     matrix[y] = [];
     for (var x = 0; x < m; x++) {
@@ -12,6 +19,7 @@ for (var y = 0; y < m; y++) {
         matrix[y][x] = n;
     }
 }
+
 // var matrix = [
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 //     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
